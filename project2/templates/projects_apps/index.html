@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+{% extends "projects_apps/base.html" %}
+{% load static %}
+
+
+{% block body_block %}
+<h1>I am index page !</h1>
+<h3>List of Musicians: </h3>
+<ul>
+    {% if musician_list %}
+    {% for musician in musician_list %}
+    <li><a href="{% url 'myapp:album_list' artist_id=musician.id %}"> {{musician.first_name}} {{ musician.last_name }}</a></li>
+    {% endfor %}
+    {% else%}
+    <h5>No Musician in the List </h5>
+    {% endif %}
+</ul>
+{% endblock %}

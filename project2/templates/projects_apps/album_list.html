@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+{% extends "projects_apps/base.html" %}
+{% load static %}
+
+
+{% block body_block %}
+    <h4>Artist Name: {{ artist_info.first_name }} {{ artist_info.last_name }}</h4>
+    <h4>Artist Instrument: {{ artist_info.instrument }}</h4>
+    <h4>Artist Rating: {{ artist_rating.num_stars__avg }}</h4>
+
+    <a href="{% url 'myapp:edit_artist' artist_id=artist_info.id %}", class="btn btn-info btn-sm">Edit</a>
+    <h5>List of Album...... </h5>
+    <table class="table table-border">
+        <tr>
+            <th>Album Name</th>
+            <th>Release date</th>
+            <th>Rating</th>
+        </tr>
+        {% for album in album_list %}
+        <tr>
+            <td><a href="{% url 'myapp:edit_album' album_id=album.id %}">{{ album.name }}</a></td>
+            <td>{{album.release_date |date:"M D, Y" }}</td>
+            <td>{{ album.num_stars }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

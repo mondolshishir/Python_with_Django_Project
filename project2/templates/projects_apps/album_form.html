@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+
+{% extends "projects_apps/base.html" %}
+{% load static %}
+
+
+{% block body_block %}
+    <h1>I am Album Form page !</h1>
+<form method="POST">
+    {{ album_form.as_p }}
+    {% csrf_token%}
+    <input class="btn btn-primary btn-sm" type="submit" name="submit", value="Add">
+</form>
+{% endblock %}
